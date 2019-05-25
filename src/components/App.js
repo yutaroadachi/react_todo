@@ -1,13 +1,13 @@
 import React from "react";
 
+import Form from "./Form";
+import Todo from "./Todo";
+
 class App extends React.Component {
   render() {
     return (
     <div>
-      <form>
-        <input type="text" />
-        <button>追加</button>
-      </form>
+      <Form />
 
       <label>
         <input type="checkbox" />
@@ -22,28 +22,13 @@ class App extends React.Component {
 
       <ul>
         <li>
-          <label>
-            <input type="checkbox" />
-            洗濯する
-          </label>
-          <button>編集</button>
-          <button>削除</button>
+          <Todo id={0} text="洗濯する" />
         </li>
         <li>
-          <label>
-            <input type="checkbox" />
-            宿題する
-          </label>
-          <button>編集</button>
-          <button>削除</button>
+          <Todo id={0} text="宿題する" />
         </li>
         <li>
-          <label>
-            <input type="checkbox" />
-            腹筋する
-          </label>
-          <button>編集</button>
-          <button>削除</button>
+          <Todo id={0} text="腹筋する" />
         </li>
       </ul>
 
