@@ -31,9 +31,9 @@ class App extends React.Component {
       </select>
 
       <ul>
-        {this.state.todos.map(({ id, text }) => (
+        {this.state.todos.map(({ id, text, completed }) => (
           <li key={id}>
-            <Todo text={text} />
+            <Todo id={id} text={text} completed={completed} onChange={this.handleChangeCompleted} />
           </li>
         ))}
       </ul>
@@ -47,10 +47,26 @@ class App extends React.Component {
     const newTodo = {
       id: currentId,
       text,
+      completed: false
     }
     const newTodos = [...this.state.todos, newTodo]
     this.setState({ todos: newTodos })
     currentId++;
+  }
+
+  handleChangeCompleted = (id, completed) => {
+    const newTodos = this.state.todos.map(todo => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed,
+        }
+      }
+
+      return todo
+    })
+
+    this.setState({ todos: newTodos });
   }
 }
 
