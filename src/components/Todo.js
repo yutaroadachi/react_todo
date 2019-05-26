@@ -7,19 +7,33 @@ class Todo extends React.Component {
     return (
       <div>
         <label>
-          <input type="checkbox" ckecked={completed} onChange={this.handleChangeCompleted} />
-          {text}
+          <input
+            type="checkbox"
+            checked={completed}
+            onChange={this.handleChangeCompleted}
+          />
+          <span>{text}</span>
         </label>
-        <button>編集</button>
-        <button>削除</button>
+        <button onClick={this.handleClickEdit}>編集</button>
+        <button onClick={this.handleClickDelete}>削除</button>
       </div>
     );
   }
 
   handleChangeCompleted = () => {
     const { onChange, id, completed } = this.props;
-    onChange(id, !completed);
-  }
+    onChange(id, "completed", !completed);
+  };
+
+  handleClickEdit = () => {
+    const { onChange, id, editing } = this.props;
+    onChange(id, "editing", !editing);
+  };
+
+  handleClickDelete = () => {
+    const { onDelete, id } = this.props;
+    onDelete(id);
+  };
 }
 
 export default Todo;

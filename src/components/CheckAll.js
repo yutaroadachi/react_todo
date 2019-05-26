@@ -6,13 +6,17 @@ class CheckAll extends React.Component {
 
     return (
       <label>
-        <input type="checkbox" checked={allCompleted} onChange={this.handleChange} />
+        <input
+          type="checkbox"
+          checked={allCompleted}
+          onChange={this.handleChange}
+        />
         全て{allCompleted ? "未完了" : "完了"}にする
       </label>
     );
   }
 
-  handleChange = () => {
+  handleChange = e => {
     const { onChange, allCompleted } = this.props;
     onChange(!allCompleted);
   };
